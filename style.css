@@ -1,0 +1,556 @@
+/* =========================================
+   VARIÁVEIS E TEMA
+   ========================================= */
+:root {
+    --bg-app: #000000;
+    --accent-cyan: #00e5ff;
+    --accent-cobalt: #0a0c10;
+    --accent-glow: rgba(0, 229, 255, 0.2);
+    --text-main: #ffffff;
+    --text-muted: #8b92a5;
+    --text-shadow-glow: 0 0 10px var(--accent-cyan);
+    --border-subtle: rgba(255, 255, 255, 0.06);
+    --transition-smooth: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif; 
+}
+
+body {
+    background-color: var(--bg-app);
+    color: var(--text-main);
+    overflow-x: hidden;
+    line-height: 1.6;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    z-index: -2;
+    opacity: 0.05;
+    pointer-events: none;
+    background-image: url("https://img.icons8.com/wired/128/00e5ff/circuit.png");
+    background-repeat: repeat;
+}
+
+/* =========================================
+   EFEITO DE BRILHO NEON NAS LATERAIS
+   ========================================= */
+
+.glow-1, .glow-2 {
+    position: fixed; /* Fica parado na tela */
+    width: 400px;
+    height: 400px;
+    border-radius: 50%;
+    background-color: var(--accent-cyan);
+    filter: blur(150px); /* O segredo do efeito esfumaçado */
+    opacity: 0.50; /* Ajuste aqui: mais alto = mais brilho | mais baixo = mais discreto */
+    z-index: -1; /* Fica atrás de tudo, mas na frente do fundo preto */
+    pointer-events: none; /* Garante que não atrapalhe os cliques */
+}
+
+/* Posiciona o primeiro brilho no canto superior esquerdo */
+.glow-1 {
+    top: -100px;
+    left: -150px;
+}
+
+/* Posiciona o segundo brilho no canto inferior direito */
+.glow-2 {
+    bottom: -100px;
+    right: -150px;
+}
+
+/* Ajuste para o celular: brilhos menores para não "lavar" a tela */
+@media (max-width: 768px) {
+    .glow-1, .glow-2 {
+        width: 200px;
+        height: 200px;
+        filter: blur(80px);
+        opacity: 0.15;
+    }
+}
+/* =========================================
+   NAVEGAÇÃO
+   ========================================= */
+.navegacao {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border-subtle);
+}
+
+.menu {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    padding: 1.2rem;
+    gap: 2rem;
+}
+
+.menu a {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    transition: color var(--transition-smooth);
+}
+
+.menu a:hover {
+    color: var(--accent-cyan);
+    text-shadow: var(--text-shadow-glow);
+}
+
+/* =========================================
+   CONTAINER PRINCIPAL (Corrige o layout quebrado)
+   ========================================= */
+.tabs {
+    max-width: 1100px;
+    margin: 4rem auto;
+    padding: 0 2rem;
+    display: flex;
+    flex-direction: column; /* FORÇA AS SEÇÕES A FICAREM UMA EMBAIXO DA OUTRA */
+    gap: 6rem;
+}
+
+/* =========================================
+   HERO (CABEÇALHO)
+   ========================================= */
+.cabecalho {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* 50% imagem / 50% texto */
+    align-items: center; 
+    gap: 4rem;
+}
+
+.barbeiro-deslizante {
+    width: 100%;
+    max-width: 500px;
+    filter: drop-shadow(0 0 20px rgba(0, 229, 255, 0.3)); 
+    opacity: 0;
+    transform: translateX(-120%);
+    transition: transform 1s cubic-bezier(0.16, 1, 0.3, 1), opacity 1s ease-in-out;
+}
+
+.barbeiro-deslizante.visivel {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.cabecalho-texto {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+/* --- O NOVO TÍTULO "BARBEARIA MISAEL" EM CSS --- */
+.titulo-neon {
+    margin-bottom: 1.5rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.titulo-neon h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 5rem;
+    font-weight: 800;
+    line-height: 0.9;
+    color: transparent;
+    -webkit-text-stroke: 2px var(--accent-cyan);
+    text-shadow: 0 0 20px rgba(0, 229, 255, 0.5), 0 0 40px rgba(0, 229, 255, 0.2);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.titulo-neon h2 {
+    font-size: 1.5rem;
+    color: var(--text-main);
+    letter-spacing: 10px;
+    font-weight: 300;
+    text-transform: uppercase;
+    margin-left: 5px;
+    text-shadow: none;
+    margin-top: 5px;
+}
+
+.descricao {
+    font-size: 1.1rem;
+    margin-bottom: 2.5rem;
+    color: var(--text-muted);
+    max-width: 450px;
+}
+
+/* =========================================
+   BOTÕES GERAIS
+   ========================================= */
+.botoes-hero {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+}
+
+input[type="button"] {
+    background: transparent;
+    color: var(--text-main);
+    border: 1px solid var(--accent-cyan);
+    padding: 14px 28px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all var(--transition-smooth);
+}
+
+input[type="button"]:hover {
+    background: var(--accent-cyan);
+    color: var(--bg-app);
+    box-shadow: 0 4px 15px rgba(0, 229, 255, 0.4);
+    transform: translateY(-3px);
+}
+
+/* =========================================
+   ESTILO DAS CAIXAS (SOBRE, SERVIÇOS, ETC)
+   ========================================= */
+.titulo-secao {
+    color: var(--accent-cyan);
+    font-weight: 500;
+    margin-bottom: 1.5rem;
+    text-transform: uppercase;
+    text-shadow: var(--text-shadow-glow);
+    text-align: left;
+}
+
+.espaco, .sobre, .servicos, .rodape {
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.sobre, .servicos, .rodape {
+    padding: 3rem;
+    background-color: var(--accent-cobalt);
+    border: 1px solid var(--border-subtle);
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+/* Galeria de Fotos */
+.galeria {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-top: 1rem;
+}
+
+.galeria img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 12px;
+    transition: var(--transition-smooth);
+}
+
+.galeria img:hover {
+    border: 2px solid var(--accent-cyan);
+    transform: scale(1.03);
+}
+
+/* =========================================
+   LISTA DE SERVIÇOS (COM PONTINHOS E PREÇOS)
+   ========================================= */
+.lista-servicos {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem; /* Espaço entre as linhas */
+    margin-top: 1rem;
+}
+
+.lista-servicos li {
+    display: flex;
+    align-items: baseline; /* Alinha o texto pela base das letras */
+    width: 100%;
+    font-size: 1.1rem;
+    transition: all var(--transition-smooth);
+    padding: 10px 0;
+}
+
+/* O nome do serviço na esquerda */
+.nome-corte {
+    font-weight: 500;
+    color: var(--text-main);
+    white-space: nowrap; /* Impede o nome de quebrar em duas linhas à toa */
+}
+
+/* A MÁGICA DOS PONTINHOS */
+.pontinhos {
+    flex-grow: 1; /* Faz esse elemento esticar e empurrar o preço pro canto */
+    border-bottom: 2px dotted var(--text-muted); /* Cria a linha pontilhada */
+    margin: 0 15px; /* Dá um respiro entre a palavra e os pontos */
+    opacity: 0.4; /* Deixa os pontos mais discretos que as letras */
+}
+
+/* O preço na direita */
+.preco-corte {
+    font-weight: 700;
+    color: var(--accent-cyan); /* Preço brilhando em ciano */
+    white-space: nowrap;
+}
+
+/* Efeito ao passar o mouse por cima da linha do serviço */
+.lista-servicos li:hover .nome-corte {
+    color: var(--accent-cyan);
+    text-shadow: 0 0 10px rgba(0, 229, 255, 0.4);
+}
+
+.lista-servicos li:hover .pontinhos {
+    border-bottom-color: var(--accent-cyan);
+    opacity: 0.8;
+}
+
+.rodape { text-align: center; }
+.rodape .titulo-secao { text-align: center; }
+
+/* =========================================
+   MODAL (POP-UP)
+   ========================================= */
+#meuModal {
+    margin: auto;
+    width: 90%;
+    max-width: 400px;
+    border-radius: 20px;
+    border: 2px solid var(--accent-cyan);
+    background-color: var(--accent-cobalt);
+    padding: 2rem;
+    box-shadow: 0 0 40px rgba(0, 229, 255, 0.3);
+    color: white;
+}
+
+#meuModal::backdrop {
+    background-color: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(8px);
+}
+
+#meuModal h2 {
+    text-align: center;
+    font-size: 1.3rem;
+    margin-bottom: 1.5rem;
+    color: var(--accent-cyan);
+}
+
+.campo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 12px;
+    width: 100%;
+}
+
+.campo label {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    color: var(--accent-cyan);
+    margin-bottom: 5px;
+}
+
+#meuModal input, #meuModal textarea {
+    width: 100%;
+    padding: 12px;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--border-subtle);
+    border-radius: 12px;
+    color: white;
+}
+
+.input-grupo {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    margin-bottom: 12px;
+}
+
+.botoes-modal {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+#confirmarAgendamento {
+    flex: 2;
+    background: var(--accent-cyan);
+    color: #000;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+#fecharModal {
+    flex: 1;
+    background: transparent;
+    color: #ff4b4b;
+    border: 1px solid #ff4b4b;
+    border-radius: 8px;
+    cursor: pointer;
+    padding: 10px;
+}
+
+/* =========================================
+   RESPONSIVIDADE (MOBILE)
+   ========================================= */
+@media (max-width: 900px) {
+    .cabecalho { 
+        grid-template-columns: 1fr; 
+        text-align: center; 
+    }
+    
+    .cabecalho-texto { 
+        align-items: center; 
+    }
+
+    .titulo-neon h1 { font-size: 3.5rem; }
+    .titulo-neon h2 { font-size: 1.2rem; }
+
+    .barbeiro-deslizante {
+        max-width: 300px;
+        margin: 0 auto;
+    }
+
+    .botoes-hero { 
+        justify-content: center; 
+    }
+
+    .galeria { 
+        grid-template-columns: 1fr; 
+    }
+}
+
+/* --- O TÍTULO "BARBEARIA MISAEL" EM BEBAS NEUE --- */
+.titulo-neon {
+    margin-bottom: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    line-height: 0.85; /* Deixa as duas palavras bem juntas */
+}
+
+/* Palavra MISAEL (Gigante e Vazada) */
+.titulo-neon h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 9rem; /* Aumentei o tamanho porque ela é mais fina */
+    font-weight: normal; 
+    color: transparent;
+    -webkit-text-stroke: 2px var(--text-main);
+    text-shadow: 0 0 20px rgba(0, 229, 255, 0.5), 0 0 40px rgba(0, 229, 255, 0.2);
+    letter-spacing: 4px;
+    text-transform: uppercase;
+}
+
+/* Palavra BARBEARIA (Sólida e Espaçada) */
+.titulo-neon h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 4rem;
+    color: var(--accent-cyan);
+    font-weight: normal;
+    text-transform: uppercase; /* A Bebas funciona perfeitamente toda em maiúscula */
+    letter-spacing: 12px; /* Aquele espaçamento de cinema */
+    margin-top: 5px; 
+    margin-left: 5px;
+    text-shadow: 0 0 15px rgba(0, 229, 255, 0.6); 
+}
+
+/* =========================================
+   Ajuste pro Celular (Se já tiver no final do arquivo, apenas substitua)
+   ========================================= */
+@media (max-width: 900px) {
+    .titulo-neon h1 { 
+        font-size: 4.5rem; 
+    }
+    .titulo-neon h2 { 
+        font-size: 1.8rem; 
+        letter-spacing: 8px;
+        margin-top: 5px; 
+    }
+}
+
+
+/* =========================================
+   RODAPÉ COM MAPA INTERATIVO (AJUSTADO)
+   ========================================= */
+.rodape-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Divide 50/50 */
+    gap: 3rem;
+    align-items: center; /* Centraliza verticalmente o texto com o mapa */
+    width: 100%;
+}
+
+.rodape-info {
+    text-align: left;
+}
+
+.rodape-mapa {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* CENTRALIZA TUDO DENTRO DA COLUNA */
+    width: 100%; 
+}
+
+/* Caixa do Mapa Interativo */
+.mapa-box {
+    position: relative;
+    width: 100%; 
+    max-width: 450px; /* Define um limite para não ficar largo demais em monitores gigantes */
+    height: 300px; 
+    border-radius: 15px;
+    overflow: hidden;
+    border: 1px solid var(--border-subtle);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+    transition: var(--transition-smooth);
+    background-color: #e5e3df;
+    margin: 0 auto; /* GARANTE A CENTRALIZAÇÃO ABSOLUTA */
+}
+
+.mapa-box:hover {
+    border-color: var(--accent-cyan);
+    box-shadow: 0 0 20px var(--accent-glow);
+}
+
+/* Ajuste do texto do endereço abaixo do mapa */
+.rodape-mapa p {
+    margin-top: 15px;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    text-align: center; /* Centraliza o endereço também */
+    width: 100%;
+    max-width: 450px;
+}
+
+/* =========================================
+   RESPONSIVIDADE DO MAPA (CELULAR)
+   ========================================= */
+@media (max-width: 900px) {
+    .rodape-container {
+        grid-template-columns: 1fr; /* Empilha no mobile */
+        text-align: center;
+        gap: 2rem;
+    }
+    
+    .rodape-info {
+        text-align: center;
+    }
+
+    .mapa-box {
+        max-width: 100%; /* No mobile usa a largura total da tela */
+        height: 250px;
+    }
+}

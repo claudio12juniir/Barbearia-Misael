@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Barbearia Misael</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@800&family=Poppins:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="glow-1"></div>
+    <div class="glow-2"></div>
+
+
+    <nav class="navegacao">
+        <ul class="menu">
+            <li><a href="#tab1">Home</a></li>
+            <li><a href="#tab2">Sobre</a></li>
+            <li><a href="#tab3">Serviços</a></li>
+            <li><a href="#tab4">Contato</a></li>
+        </ul>
+    </nav>
+
+    <div class="tabs">
+        
+        <div class="cabecalho" id="tab1">
+            <img src="img/perfil.png" alt="Barbeiro" class="barbeiro-deslizante">
+
+            <div class="cabecalho-texto">
+                <div class="titulo-neon">
+                    <h2>Barbearia</h2>
+                    <h1>MISAEL</h1>
+                </div>
+                
+                <p class="descricao">
+                    Oferecemos os melhores serviços de barbearia para você ficar sempre estiloso.
+                </p>
+                
+                <div class="botoes-hero">
+                    <div id="whatsapp">
+                        <input type="button" value="Agendar via WhatsApp">
+                    </div>
+                    <div id="site"> 
+                        <input type="button" id="abrirModal" value="Agendar pelo site">
+                    </div>
+                </div>
+
+                <dialog id="meuModal">
+                    <h2>AGENDAR HORÁRIO</h2>
+                    <form id="formAgendamento" method="dialog"> 
+                        <div class="campo">
+                            <label for="nome">Seu Nome:</label>
+                            <input type="text" id="nome" placeholder="Digite seu nome" required>
+                        </div>
+                        
+                        <div class="input-grupo">
+                            <div class="campo">
+                                <label for="data">Dia:</label>
+                                <input type="date" id="data" required>
+                            </div>
+                            <div class="campo">
+                                <label for="hora">Hora:</label>
+                                <input type="time" id="hora" required>
+                            </div>
+                        </div>
+
+                        <div class="campo">
+                            <label for="msg">Alguma observação?</label>
+                            <textarea id="msg" placeholder="Ex: Corte e Barba"></textarea>
+                        </div>
+                        
+                        <div class="botoes-modal">
+                            <button type="button" id="fecharModal">Cancelar</button>
+                            <button type="button" id="confirmarAgendamento">Confirmar</button>
+                        </div>
+                    </form>
+                </dialog>
+            </div>
+        </div> <div class="espaco">
+            <h2 class="titulo-secao">Conheça nosso espaço!</h2>
+            <div class="galeria">
+                <div class="image-wrapper" data-label="Foto do espaço 1">
+                    <img src="img/crt1.jpeg" alt="Foto do espaço 1">
+                </div>
+                <div class="image-wrapper" data-label="Foto do espaço 2">
+                    <img src="img/crt2.jpeg" alt="Foto do espaço 2">
+                </div>
+                <div class="image-wrapper" data-label="Foto do espaço 3">
+                    <img src="img/crt3.jpeg" alt="Foto do espaço 3">
+                </div>
+            </div>
+        </div>
+
+        <div class="sobre" id="tab2">
+            <h2 class="titulo-secao">Sobre nós</h2>
+            <p>
+                A Barbearia Misael é um espaço dedicado a oferecer serviços de alta qualidade para nossos clientes. Com uma equipe de profissionais experientes, garantimos um atendimento personalizado e resultados incríveis. Venha nos visitar e experimente a diferença!
+            </p>
+        </div>
+
+       <div class="servicos" id="tab3">
+    <h3 class="titulo-secao">Serviços principais</h3>
+    <ul class="lista-servicos">
+        <li>
+            <span class="nome-corte">Degradê</span>
+            <span class="pontinhos"></span>
+            <span class="preco-corte">R$ 40,00</span>
+        </li>
+        <li>
+            <span class="nome-corte">Social</span>
+            <span class="pontinhos"></span>
+            <span class="preco-corte">R$ 40,00</span>
+        </li>
+        <li>
+            <span class="nome-corte">Barba Completa</span>
+            <span class="pontinhos"></span>
+            <span class="preco-corte">R$ 35,00</span>
+        </li>
+        <li>
+            <span class="nome-corte">Sobrancelha</span>
+            <span class="pontinhos"></span>
+            <span class="preco-corte">R$ 10,00</span>
+        </li>
+        <li>
+            <span class="nome-corte">Combo (Corte + Barba)</span>
+            <span class="pontinhos"></span>
+            <span class="preco-corte">R$ 60,00</span>
+        </li>
+           <li>
+            <span class="nome-corte">Combo (Corte + Sobrancelha + Barba)</span>
+            <span class="pontinhos"></span>
+            <span class="preco-corte">R$ 70,00</span>
+        </li>
+       
+    </ul>
+</div>
+
+        <div class="rodape" id="tab4">
+            <h2 class="titulo-secao">Entre em contato</h2>
+            <p>Telefone: (11) 96146-0040</p>
+            <p>Email: contato@barbeariamisael.com.br</p>
+            <footer>
+                 <a href="https://www.instagram.com/misael_barbearia/" target="_blank" style="color: var(--accent-cyan); text-decoration: none; display: block; margin-top: 1rem;">Siga-nos no Instagram</a>
+            </footer>
+           
+
+            <h2 class="titulo-secao" style="margin-top: 2rem;">Horário de Funcionamento</h2>
+            <p>Segunda a Sexta: 09:00 às 20:00</p>
+            <p>Sábado e Feriados: 09:00 às 15:00</p>
+        </div>
+
+        <div class="rodape-mapa">
+            <h2 class="titulo-secao">Como nos encontrar</h2>
+            <div class="mapa-box">
+                <iframe 
+                    src="https://maps.google.com/maps?q=Barbearia%20Misael,%20Rua%20Renata%20Agondi,%2077&t=&z=16&ie=UTF8&iwloc=&output=embed" 
+                    width="100%" 
+                    height="100%" 
+                    style="border:0;" 
+                    allowfullscreen="" 
+                    loading="lazy">
+                </iframe>
+            </div>
+            <p style="margin-top: 15px; font-size: 0.9rem; color: var(--text-muted); text-align: left;">
+                Rua Renata Agondi, 77 - Itaim Paulista, São Paulo - SP
+            </p>
+        </div>
+
+    </div> <script src="power.js"></script>
+</body>
+</html>
