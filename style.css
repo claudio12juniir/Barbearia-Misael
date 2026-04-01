@@ -579,3 +579,16 @@ input[type="button"]:hover {
         margin: 0 8px; 
     }
 }
+
+#meuModal input, #meuModal textarea {
+    width: 100%;
+    padding: 12px;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--border-subtle);
+    border-radius: 12px;
+    color: white;
+    
+    /* ADICIONE ESTA LINHA ABAIXO */
+    font-size: 16px; /* Evita o zoom automático em celulares */
+}
