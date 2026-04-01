@@ -72,7 +72,7 @@ body::before {
         width: 200px;
         height: 200px;
         filter: blur(80px);
-        opacity: 0.15;
+        opacity: 0.3;
     }
 }
 /* =========================================
@@ -552,5 +552,30 @@ input[type="button"]:hover {
     .mapa-box {
         max-width: 100%; /* No mobile usa a largura total da tela */
         height: 250px;
+    }
+}
+
+@media (max-width: 900px) {
+    /* ... suas outras regras de celular que já estão aqui ... */
+
+    /* 1. Reduz o espaçamento interno das caixas pela metade */
+    .sobre, .servicos, .rodape {
+        padding: 1.5rem; 
+    }
+
+    /* 2. Diminui levemente o tamanho da fonte da lista */
+    .lista-servicos li {
+        font-size: 0.95rem; 
+    }
+
+    /* 3. Permite que o nome do serviço quebre de linha se for muito comprido */
+    .nome-corte {
+        white-space: normal; 
+        line-height: 1.2;
+    }
+
+    /* 4. Reduz a margem dos pontinhos para economizar espaço */
+    .pontinhos {
+        margin: 0 8px; 
     }
 }
